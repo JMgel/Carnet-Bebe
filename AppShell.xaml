@@ -3,9 +3,9 @@
     x:Class="CarnetBebe.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CarnetBebe"
+    xmlns:local="clr-namespace:CarnetBebe.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="Carnet_Bébé">
+    Title="Carnet Bébé">
 
     <ShellContent
         Title="Home"

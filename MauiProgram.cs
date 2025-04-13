@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CarnetBebe.Services;
+using CarnetBebe.View;
 
 namespace CarnetBebe
 {

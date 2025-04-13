@@ -1,6 +1,6 @@
 ﻿using CarnetBebe.Services;
 
-namespace CarnetBebe
+namespace CarnetBebe.View
 {
     public partial class MainPage : ContentPage
     {
