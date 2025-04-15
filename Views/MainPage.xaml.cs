@@ -1,4 +1,7 @@
-﻿using CarnetBebe.Services;
+﻿using Carnet_Bebe.ViewModels;
+using CarnetBebe.Services;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace CarnetBebe.View
 {
@@ -12,9 +15,10 @@ namespace CarnetBebe.View
         {
             InitializeComponent();
             _databaseService = databaseService;
+            BindingContext = new MainViewModel(); 
+       
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        public void OnCounterClicked()
         {
             count++;
 
