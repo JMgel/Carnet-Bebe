@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using CarnetBebe.Services;
 using CarnetBebe.View;
+using CarnetBebe.ViewModels;
 
 namespace CarnetBebe
 {
@@ -23,7 +24,9 @@ namespace CarnetBebe
             {
                 return new DatabaseService();
             });
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddTransient<MainPage>();
+           
 
 #if DEBUG
             builder.Logging.AddDebug();

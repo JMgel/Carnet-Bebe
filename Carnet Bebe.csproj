@@ -64,6 +64,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Components\ButtonsAndLine.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\ButtonsImageGroup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

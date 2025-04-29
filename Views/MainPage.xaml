@@ -4,28 +4,23 @@
              x:Class="CarnetBebe.View.MainPage"
              Title="MainPage">
 
-
-    <VerticalStackLayout>
+    <ScrollView>
         <VerticalStackLayout>
             <local:ButtonsImageGroup
-            HeaderImage="dotnet_bot.png"
-            Button1Image="dotnet_bot.png"
-            Button1Text="Action 1"
-            Button2Image="dotnet_bot.png"
-            Button2Text="Action 2"
+            HeaderImage="angrypoo.png"
+            Button1Image="angrypoo.png"
+            Button2Image="angrypoo.png"
             Button1Command="{Binding Button1Command}"
             Button2Command="{Binding Button2Command}"
             />
 
+            <local:ButtonsAndLine />
             <local:ButtonsImageGroup
-            HeaderImage="dotnet_bot.png"
-            Button1Image="dotnet_bot.png"
-            Button1Text="Autre action"
-            Button2Image="dotnet_bot.png"
-            Button2Text="Option"
+            HeaderImage="angrypoo.png"
+            Button1Image="angrypoo.png"
+            Button2Image="angrypoo.png"
             Button1Command="{Binding Button1Command}"
             Button2Command="{Binding Button2Command}"/>
         </VerticalStackLayout>
-    </VerticalStackLayout>
-
+    </ScrollView>
 </ContentPage>

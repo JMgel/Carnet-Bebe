@@ -6,9 +6,9 @@ namespace CarnetBebe.Services
 
     public interface IDatabaseService
     {
-        Task<List<EventLogEntry>> GetEntriesAsync();
-        Task<int> SaveEntryAsync(EventLogEntry entry);
-        Task<int> DeleteEntryAsync(EventLogEntry entry);
+        public Task<List<EventLogEntry>> GetEntriesAsync();
+        public Task<int> SaveEntryAsync(EventLogEntry entry);
+        public Task<int> DeleteEntryAsync(EventLogEntry entry);
     }
 
 
@@ -39,5 +39,4 @@ namespace CarnetBebe.Services
             return _databaseConnection.DeleteAsync(entry);
         }
     }
-
 }

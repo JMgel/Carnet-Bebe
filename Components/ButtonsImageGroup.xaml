@@ -4,25 +4,27 @@
              x:Class="Carnet_Bebe.Components.ButtonsImageGroup"
              x:Name="Root">
 
-    <Grid>
-      
-        <Image Source="{Binding HeaderImage}"
+    <Grid RowDefinitions="Auto,*">
+        <Image Grid.Row="0" 
+               Source="{Binding HeaderImage}"
                HorizontalOptions="Center"
-               VerticalOptions="Start"
-                 Aspect="AspectFit"
-               HeightRequest="100"/>
+               VerticalOptions="Center"
+               Aspect="Center"
+               HeightRequest="80"
+               Margin="10"
+               BindingContext="{x:Reference Root}"/>
 
-        <HorizontalStackLayout HorizontalOptions="Center"
+        <HorizontalStackLayout Grid.Row="1"
+                               HorizontalOptions="Center"
                                Spacing="20"
-                               VerticalOptions="End"
                                BindingContext="{x:Reference Root}">
-            <Button ImageSource="{Binding Button1Image }"
+            <Button ImageSource="{Binding Button1Image}"
                     Text="{Binding Button1Text}"
                     Command="{Binding Button1Command}"
                     ContentLayout="Top, 10"/>
 
             <Button ImageSource="{Binding Button2Image}"
-                     Text="{Binding Button2Text}"
+                    Text="{Binding Button2Text}"
                     Command="{Binding Button2Command}"
                     ContentLayout="Top, 10"/>
         </HorizontalStackLayout>
