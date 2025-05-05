@@ -4,6 +4,44 @@
              x:Class="CarnetBebe.View.MainPage"
              Title="MainPage">
 
+    <!--<Grid RowSpacing="20" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        --><!-- Ligne 1 : 1 instance centrée --><!--
+        <local:ButtonsAndLine Grid.Row="0" HorizontalOptions="Center"
+                            LabelText ="{Binding LabelText}"/>
+
+        --><!-- Ligne 2 : 2 instances côte à côte --><!--
+        <Grid Grid.Row="1" ColumnSpacing="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <local:ButtonsAndLine Grid.Column="0"/>
+            <local:ButtonsAndLine Grid.Column="1"/>
+        </Grid>
+
+        --><!-- Ligne 3 : Liste en bas --><!--
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Items}" Margin="0,20,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Image}" WidthRequest="40" HeightRequest="40" Grid.Column="0"/>
+                        <Label Text="{Binding Text}" VerticalOptions="Center" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>--><!--
+    </Grid>-->
+
     <ScrollView>
         <VerticalStackLayout>
             <local:ButtonsImageGroup
@@ -11,7 +49,7 @@
             Button1Image="angrypoo.png"
             Button2Image="angrypoo.png"
             Button1Command="{Binding Button1Command}"
-            Button2Command="{Binding Button2Command}"
+            Button2Command="{Binding Button1Command}"
             />
 
             <local:ButtonsAndLine />
@@ -20,7 +58,7 @@
             Button1Image="angrypoo.png"
             Button2Image="angrypoo.png"
             Button1Command="{Binding Button1Command}"
-            Button2Command="{Binding Button2Command}"/>
+            Button2Command="{Binding Button1Command}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

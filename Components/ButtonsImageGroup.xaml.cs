@@ -8,7 +8,6 @@ public partial class ButtonsImageGroup : ContentView
 	public ButtonsImageGroup()
 	{
         InitializeComponent();
-       // BindingContext = this;
         this.BindingContextChanged += (s, e) => Content.BindingContext = BindingContext;
     }
 
