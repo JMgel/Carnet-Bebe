@@ -4,18 +4,22 @@
              x:Class="CarnetBebe.View.MainPage"
              Title="MainPage">
 
-    <!--<Grid RowSpacing="20" Padding="20">
+    <Grid RowSpacing="20" Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        --><!-- Ligne 1 : 1 instance centrée --><!--
+         <!--Ligne 1 : 1 instance centrée--> 
         <local:ButtonsAndLine Grid.Row="0" HorizontalOptions="Center"
+                              Button1Command="{Binding ButtonFallingAsleep}"
+                              Button2Command="{Binding ButtonFallingAsleep}"
+                              Button1Text="{Binding LabelText}"
+                              Button1Image="angrypoo.png"
                             LabelText ="{Binding LabelText}"/>
 
-        --><!-- Ligne 2 : 2 instances côte à côte --><!--
+         <!--Ligne 2 : 2 instances côte à côte--> 
         <Grid Grid.Row="1" ColumnSpacing="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -25,8 +29,8 @@
             <local:ButtonsAndLine Grid.Column="1"/>
         </Grid>
 
-        --><!-- Ligne 3 : Liste en bas --><!--
-        <CollectionView Grid.Row="2" ItemsSource="{Binding Items}" Margin="0,20,0,0">
+         <!--Ligne 3 : Liste en bas--> 
+        <!--<CollectionView Grid.Row="2" ItemsSource="{Binding Items}" Margin="0,20,0,0">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10" ColumnSpacing="10">
@@ -39,10 +43,10 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>--><!--
-    </Grid>-->
+        </CollectionView>-->
+    </Grid>
 
-    <ScrollView>
+    <!--<ScrollView>
         <VerticalStackLayout>
             <local:ButtonsImageGroup
             HeaderImage="angrypoo.png"
@@ -60,5 +64,5 @@
             Button1Command="{Binding Button1Command}"
             Button2Command="{Binding Button1Command}"/>
         </VerticalStackLayout>
-    </ScrollView>
+    </ScrollView>-->
 </ContentPage>

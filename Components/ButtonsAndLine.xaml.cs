@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace Carnet_Bebe.Components;
@@ -7,7 +8,7 @@ public partial class ButtonsAndLine : ContentView
     public ButtonsAndLine()
     {
         InitializeComponent();
-        this.BindingContextChanged += (s, e) => Content.BindingContext = BindingContext;
+     /*   this.BindingContextChanged += (s, e) => Content.BindingContext = BindingContext*/;
     }
     public static readonly BindableProperty LabelTextProperty = CreateBindableProperty<string>(nameof(LabelText));
 
@@ -60,6 +61,13 @@ public partial class ButtonsAndLine : ContentView
     {
         get => (ICommand)GetValue(Button2CommandProperty);
         set => SetValue(Button2CommandProperty, value);
+    }
+
+    private void Button1_Clicked(object sender, EventArgs e)
+    {
+        Debug.WriteLine("Click détecté !");
+        if (Button1Command?.CanExecute(null) == true)
+            Button1Command.Execute(null);
     }
     private static BindableProperty CreateBindableProperty<T>(string propertyName)
     {

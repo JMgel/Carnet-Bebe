@@ -15,7 +15,7 @@ namespace CarnetBebe.ViewModels
         public Command ButtonPeeing { get; }
         public Command ButtonPooping { get; }
 
-        public string LabelText = "Bonjour";
+        public string LabelText { get; } ="Bonjour";
         public MainViewModel(IDatabaseService databaseService)
         {
             Button1Command = new Command(ExecuteButton1);
@@ -61,11 +61,6 @@ namespace CarnetBebe.ViewModels
         private void ExecuteButton1()
         {
             //Test
-        }
-
-        private void ExecuteButton2()
-        {
-            //Test2
         }
     }
 }
