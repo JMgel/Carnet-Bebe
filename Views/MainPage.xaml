@@ -1,8 +1,9 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Carnet_Bebe.Components"
+             xmlns:local="clr-namespace:CarnetBebe.Components"
              x:Class="CarnetBebe.View.MainPage"
-             Title="MainPage">
+             Title="Carnet Bébé"
+             x:Name="RootPage">
 
     <Grid RowSpacing="20" Padding="20">
         <Grid.RowDefinitions>
@@ -11,58 +12,61 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-         <!--Ligne 1 : 1 instance centrée--> 
-        <local:ButtonsAndLine Grid.Row="0" HorizontalOptions="Center"
-                              Button1Command="{Binding ButtonFallingAsleep}"
-                              Button2Command="{Binding ButtonFallingAsleep}"
-                              Button1Text="{Binding LabelText}"
-                              Button1Image="angrypoo.png"
-                            LabelText ="{Binding LabelText}"/>
+        <local:ButtonsAndLine
+            Grid.Row="0" HorizontalOptions="Center"
+            Button1Command="{Binding ButtonWakingUp}"
+            Button2Command="{Binding ButtonFallingAsleep}"
+            Button1Image="soleil.png"
+            Button2Image="lune.png"
+            LabelText1 ="{Binding LastSleepingInfo}"
+            LabelText2 ="{Binding DailyAwakeTime}"/>
 
-         <!--Ligne 2 : 2 instances côte à côte--> 
+
         <Grid Grid.Row="1" ColumnSpacing="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <local:ButtonsAndLine Grid.Column="0"/>
-            <local:ButtonsAndLine Grid.Column="1"/>
+            <local:ButtonsAndLine
+                Grid.Column="0"
+                Button1Command="{Binding ButtonBreastfeedingLeft}"   
+                Button2Command="{Binding ButtonBreastfeedingRight}"
+                Button1Image="breastfeedingleft.png"
+                Button2Image="breastfeedingright.png"
+                LabelText1 ="{Binding LastBreastFeedingInfo}"
+                LabelText2 ="{Binding DailyAmoutOfBreastFeeding}"/>
+            <local:ButtonsAndLine
+                Grid.Column="1"
+                Button1Command="{Binding ButtonPooping}"
+                Button2Command="{Binding ButtonPeeing}"
+                Button1Image="angrypoo.png"
+                Button2Image="tear.png"
+                LabelText1 ="{Binding TimeLastDiaper}"
+                LabelText2 ="{Binding DailyAmoutOfDiaper}"/>
         </Grid>
 
-         <!--Ligne 3 : Liste en bas--> 
-        <!--<CollectionView Grid.Row="2" ItemsSource="{Binding Items}" Margin="0,20,0,0">
+        <CollectionView Grid.Row="2" ItemsSource="{Binding AllEvents}"    WidthRequest="200" Margin="0,20,0,0"   HorizontalOptions="Center">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10" ColumnSpacing="10">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="❌"
+                                       Command="{Binding BindingContext.DeleteEventCommand, Source={x:Reference RootPage}}"
+                                       CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="10" ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding Image}" WidthRequest="40" HeightRequest="40" Grid.Column="0"/>
-                        <Label Text="{Binding Text}" VerticalOptions="Center" Grid.Column="1"/>
+                        <Image Source="{Binding ImageSource}" WidthRequest="40" HeightRequest="40" Grid.Column="0"/>
+                        <Label Text="{Binding Timestamp}" VerticalOptions="Center" Grid.Column="1"/>
                     </Grid>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>-->
+        </CollectionView>
     </Grid>
-
-    <!--<ScrollView>
-        <VerticalStackLayout>
-            <local:ButtonsImageGroup
-            HeaderImage="angrypoo.png"
-            Button1Image="angrypoo.png"
-            Button2Image="angrypoo.png"
-            Button1Command="{Binding Button1Command}"
-            Button2Command="{Binding Button1Command}"
-            />
-
-            <local:ButtonsAndLine />
-            <local:ButtonsImageGroup
-            HeaderImage="angrypoo.png"
-            Button1Image="angrypoo.png"
-            Button2Image="angrypoo.png"
-            Button1Command="{Binding Button1Command}"
-            Button2Command="{Binding Button1Command}"/>
-        </VerticalStackLayout>
-    </ScrollView>-->
 </ContentPage>

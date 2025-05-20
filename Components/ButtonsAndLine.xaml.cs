@@ -1,16 +1,17 @@
-using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Carnet_Bebe.Components;
+namespace CarnetBebe.Components;
 
 public partial class ButtonsAndLine : ContentView
 {
     public ButtonsAndLine()
     {
         InitializeComponent();
-     /*   this.BindingContextChanged += (s, e) => Content.BindingContext = BindingContext*/;
     }
-    public static readonly BindableProperty LabelTextProperty = CreateBindableProperty<string>(nameof(LabelText));
+
+    public static readonly BindableProperty LabelText1Property = CreateBindableProperty<string>(nameof(LabelText1));
+
+    public static readonly BindableProperty LabelText2Property = CreateBindableProperty<string>(nameof(LabelText2));
 
     public static readonly BindableProperty Button1ImageProperty =
         CreateBindableProperty<ImageSource>(nameof(Button1Image));
@@ -25,10 +26,15 @@ public partial class ButtonsAndLine : ContentView
 
     public static readonly BindableProperty Button2CommandProperty = CreateBindableProperty<Command>((nameof(Button2Command)));
 
-    public string LabelText
+    public string LabelText1
     {
-        get => (string)GetValue(LabelTextProperty);
-        set => SetValue(LabelTextProperty, value);
+        get => (string)GetValue(LabelText1Property);
+        set => SetValue(LabelText1Property, value);
+    }
+    public string LabelText2
+    {
+        get => (string)GetValue(LabelText2Property);
+        set => SetValue(LabelText2Property, value);
     }
     public ImageSource Button1Image
     {
@@ -63,12 +69,6 @@ public partial class ButtonsAndLine : ContentView
         set => SetValue(Button2CommandProperty, value);
     }
 
-    private void Button1_Clicked(object sender, EventArgs e)
-    {
-        Debug.WriteLine("Click détecté !");
-        if (Button1Command?.CanExecute(null) == true)
-            Button1Command.Execute(null);
-    }
     private static BindableProperty CreateBindableProperty<T>(string propertyName)
     {
         return BindableProperty.Create(propertyName, typeof(T), typeof(ButtonsAndLine), default(T));

@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using CarnetBebe.Services;
+using SQLite;
 
 namespace CarnetBebe.Models
 {
@@ -18,22 +19,45 @@ namespace CarnetBebe.Models
         {
             EventType = type;
             Timestamp = DateTime.Now;
+            ImageSource = GetImagePath(EventType);
         }
+        public static EventLogEntry DefaultEvent = new EventLogEntry
+        {
+            Id = 0,
+            Timestamp = DateTime.MinValue,
+            EventType = EventType.FallingAsleep,
+        };
+
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        [Indexed]
         public DateTime Timestamp { get; set; }
+        [Indexed]
         public EventType EventType { get; set; }
-        public string ImageSource => ImagePaths[EventType];
+        public string? ImageSource { get; init; }
 
-        private static readonly Dictionary<EventType, string> ImagePaths = new Dictionary<EventType, string>
+
+        private static string GetImagePath(EventType eventType)
         {
-        { EventType.FallingAsleep, "angrypoo" },
-        { EventType.WakingUp, "angrypoo" },
-        { EventType.BreastfeedingRight, "angrypoo" },
-        { EventType.BreastfeedingLeft, "angrypoo" },
-        { EventType.Peeing, "angrypoo" },
-        { EventType.Pooping, "angrypoo" }
-        };
+            switch (eventType)
+            {
+                case EventType.FallingAsleep:
+                    return ImagePaths.FallingAsleepPath;
+                case EventType.WakingUp:
+                    return ImagePaths.WakingUpPath;
+                case EventType.BreastfeedingRight:
+                    return ImagePaths.BreastfeedingRightPath;
+                case EventType.BreastfeedingLeft:
+                    return ImagePaths.BreastfeedingLeftPath;
+                case EventType.Peeing:
+                    return ImagePaths.PeeingPath;
+                case EventType.Pooping:
+                    return ImagePaths.PoopingPath;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(eventType), eventType, null);
+
+            }
+        }
     }
 }

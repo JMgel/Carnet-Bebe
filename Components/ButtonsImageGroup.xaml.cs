@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Carnet_Bebe.Components;
-
+namespace CarnetBebe.Components;
+[Obsolete("Old Try")]
 public partial class ButtonsImageGroup : ContentView
 {
 	public ButtonsImageGroup()
