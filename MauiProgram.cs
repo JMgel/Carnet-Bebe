@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using CarnetBebe.Services;
-using CarnetBebe.View;
 using CarnetBebe.ViewModels;
+using CarnetBebe.Views;
 
 namespace CarnetBebe
 {
@@ -25,6 +25,8 @@ namespace CarnetBebe
             });
             builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<SleepingViewModel>();
+            builder.Services.AddTransient<SleepingPage>();
            
 
 #if DEBUG

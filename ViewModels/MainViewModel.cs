@@ -1,5 +1,6 @@
 ﻿using CarnetBebe.Models;
 using CarnetBebe.Services;
+using CarnetBebe.Views;
 using System.ComponentModel;
 
 namespace CarnetBebe.ViewModels
@@ -19,6 +20,8 @@ namespace CarnetBebe.ViewModels
         public Command ButtonPooping { get; }
 
         public Command DeleteEventCommand { get; }
+
+        public Command GoToSleepingPageCommand { get; }
         #endregion
 
         #region Labels
@@ -110,6 +113,7 @@ namespace CarnetBebe.ViewModels
         }
 
         #endregion
+
         public EventLogEntry[] AllEvents
         {
             get => _allEvents;
@@ -122,6 +126,7 @@ namespace CarnetBebe.ViewModels
                 }
             }
         }
+        public TimeSpan SelectedTime { get; set; } = DateTime.Now-DateTime.Today;
 
         private readonly IDatabaseService _databaseService;
 
@@ -133,6 +138,7 @@ namespace CarnetBebe.ViewModels
             ButtonBreastfeedingLeft = new Command(AddEntryBreastfeedingLeft);
             ButtonPeeing = new Command(AddEntryPeeing);
             ButtonPooping = new Command(AddEntryPooping);
+            GoToSleepingPageCommand = new Command(async ()=> await GoToSleepingPageClicked());
             _databaseService = databaseService;
             DeleteEventCommand = new Command<EventLogEntry>(DeleteEvent);
             AllEvents = _databaseService.GetDailyEntries().OrderByDescending(e => e.Timestamp).ToArray();
@@ -177,7 +183,7 @@ namespace CarnetBebe.ViewModels
         }
         private void AddEntry(EventType evenType)
         {
-            _databaseService.SaveEntry(new EventLogEntry(evenType));
+            _databaseService.SaveEntry(new EventLogEntry(evenType, SelectedTime));
         }
 
         #region Update Labels
@@ -260,5 +266,10 @@ namespace CarnetBebe.ViewModels
                 }
             }
         }
+        private async Task GoToSleepingPageClicked()
+        {
+            await Shell.Current.GoToAsync(nameof(SleepingPage));
+        }
+        
     }
 }

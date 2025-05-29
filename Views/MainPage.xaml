@@ -1,12 +1,27 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CarnetBebe.Components"
-             x:Class="CarnetBebe.View.MainPage"
+             x:Class="CarnetBebe.Views.MainPage"
              Title="Carnet Bébé"
              x:Name="RootPage">
-
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+            <Label Text="Carnet Bébé"
+                   FontSize="20"
+                   VerticalOptions="Center"
+                   Grid.Column="0"/>
+            <Button Text="Dodo Infos"
+                    Command="{Binding GoToSleepingPageCommand}"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    Margin="10,0,0,0"/>
+        </Grid>
+    </Shell.TitleView>
+    
+    
     <Grid RowSpacing="20" Padding="20">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -44,8 +59,10 @@
                 LabelText1 ="{Binding TimeLastDiaper}"
                 LabelText2 ="{Binding DailyAmoutOfDiaper}"/>
         </Grid>
-
-        <CollectionView Grid.Row="2" ItemsSource="{Binding AllEvents}"    WidthRequest="200" Margin="0,20,0,0"   HorizontalOptions="Center">
+        <TimePicker Grid.Row="2" HorizontalOptions="Center"
+                    Time="{Binding SelectedTime}" >
+        </TimePicker>
+        <CollectionView Grid.Row="3" ItemsSource="{Binding AllEvents}"    WidthRequest="200" Margin="0,20,0,0"   HorizontalOptions="Center">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
@@ -57,13 +74,13 @@
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <Grid Padding="10" ColumnSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="{Binding ImageSource}" WidthRequest="40" HeightRequest="40" Grid.Column="0"/>
-                        <Label Text="{Binding Timestamp}" VerticalOptions="Center" Grid.Column="1"/>
-                    </Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ImageSource}" WidthRequest="40" HeightRequest="40" Grid.Column="0"/>
+                            <Label Text="{Binding Timestamp}" VerticalOptions="Center" Grid.Column="1"/>
+                        </Grid>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

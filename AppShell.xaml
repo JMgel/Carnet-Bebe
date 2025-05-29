@@ -3,7 +3,7 @@
     x:Class="CarnetBebe.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CarnetBebe.View"
+    xmlns:local="clr-namespace:CarnetBebe.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="Carnet Bébé">
 
@@ -11,5 +11,4 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
 </Shell>

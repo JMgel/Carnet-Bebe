@@ -21,6 +21,12 @@ namespace CarnetBebe.Models
             Timestamp = DateTime.Now;
             ImageSource = GetImagePath(EventType);
         }
+        public EventLogEntry(EventType type, TimeSpan hours)
+        {
+            EventType = type;
+            Timestamp = DateTime.Today.Add(hours);
+            ImageSource = GetImagePath(EventType);
+        }
         public static EventLogEntry DefaultEvent = new EventLogEntry
         {
             Id = 0,

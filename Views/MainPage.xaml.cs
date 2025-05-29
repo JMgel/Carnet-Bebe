@@ -1,7 +1,6 @@
-﻿using CarnetBebe.Services;
-using CarnetBebe.ViewModels;
+﻿using CarnetBebe.ViewModels;
 
-namespace CarnetBebe.View
+namespace CarnetBebe.Views
 {
     public partial class MainPage : ContentPage
     {
