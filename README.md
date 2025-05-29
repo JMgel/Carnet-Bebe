@@ -68,3 +68,12 @@ App.MAUI/
 │   └── ImagePaths.cs (static)
 │
 └── App.xaml
+
+
+## 🖼️ Screenshots
+
+### Main Screen
+![MainView](https://github.com/user-attachments/assets/158b1bd8-ca89-42c3-bf27-60fe33a3dbac)
+
+### Sleep Summary Page
+![Dodo](https://github.com/user-attachments/assets/9f9b6b13-6364-4f78-a21b-ef17567028b3)
