@@ -59,9 +59,18 @@
                 LabelText1 ="{Binding TimeLastDiaper}"
                 LabelText2 ="{Binding DailyAmoutOfDiaper}"/>
         </Grid>
-        <TimePicker Grid.Row="2" HorizontalOptions="Center"
+
+        <Grid Grid.Row="2" ColumnSpacing="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TimePicker Grid.Column="0" HorizontalOptions="Center"
                     Time="{Binding SelectedTime}" >
         </TimePicker>
+            <Button Grid.Column="1" HorizontalOptions="Center" Text="Maintenant" Command="{Binding ResetTimeCommand}">
+            </Button>
+         </Grid>
         <CollectionView Grid.Row="3" ItemsSource="{Binding AllEvents}"    WidthRequest="200" Margin="0,20,0,0"   HorizontalOptions="Center">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

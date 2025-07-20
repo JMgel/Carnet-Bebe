@@ -22,6 +22,7 @@ namespace CarnetBebe.ViewModels
         public Command DeleteEventCommand { get; }
 
         public Command GoToSleepingPageCommand { get; }
+        public Command ResetTimeCommand { get; }
         #endregion
 
         #region Labels
@@ -33,6 +34,7 @@ namespace CarnetBebe.ViewModels
         private string _timeLastDiaper = string.Empty;
         private string _dailyAmoutOfDiaper = string.Empty;
         private EventLogEntry[] _allEvents = [];
+        private TimeSpan _selectedTime = DateTime.Now - DateTime.Today;
 
         public string LastBreastFeedingInfo
         {
@@ -126,7 +128,19 @@ namespace CarnetBebe.ViewModels
                 }
             }
         }
-        public TimeSpan SelectedTime { get; set; } = DateTime.Now-DateTime.Today;
+
+        public TimeSpan SelectedTime
+        {
+            get => _selectedTime;
+            set
+            {
+                if (_selectedTime != value)
+                {
+                    _selectedTime = value;
+                    OnPropertyChanged(nameof(SelectedTime));
+                }
+            }
+        }
 
         private readonly IDatabaseService _databaseService;
 
@@ -141,10 +155,14 @@ namespace CarnetBebe.ViewModels
             GoToSleepingPageCommand = new Command(async ()=> await GoToSleepingPageClicked());
             _databaseService = databaseService;
             DeleteEventCommand = new Command<EventLogEntry>(DeleteEvent);
+            ResetTimeCommand = new Command(ResetTime);
             AllEvents = _databaseService.GetDailyEntries().OrderByDescending(e => e.Timestamp).ToArray();
             UpdatesAllLabels();
         }
-
+        private void ResetTime()
+        {
+            SelectedTime = DateTime.Now - DateTime.Today;
+        }
         private void AddEntryFallingAsleep()
         {
             HandleNewEntry(EventType.FallingAsleep);

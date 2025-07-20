@@ -13,10 +13,11 @@ namespace CarnetBebe.ViewModels
         {
             ArrayName = $"Tableau dodo {DateTime.Today:dd/MM}";
             var dailySleepingEvents = databaseService.GetDailyEntries(EventType.WakingUp);
+            dailySleepingEvents = dailySleepingEvents.OrderBy(dl => dl.Timestamp).ToArray();
             SleepingDatas = ExtractSleepingDatas(dailySleepingEvents);
         }
 
-        private static ObservableCollection<SleepingData> ExtractSleepingDatas(EventLogEntry[] Elements)
+        private static ObservableCollection<SleepingData> ExtractSleepingDatas(Span<EventLogEntry> Elements)
         {
             var awake = new List<DateTime>();
             var sleeping = new List<DateTime>();
@@ -38,7 +39,7 @@ namespace CarnetBebe.ViewModels
             int minCount = Math.Min(awake.Count, sleeping.Count);
 
 
-            ObservableCollection<SleepingData> sleepinDatas = new ObservableCollection<SleepingData>();
+            ObservableCollection<SleepingData> sleepinDatas = [];
 
             for (int i = 0; i < minCount; i++)
             {
